@@ -51,7 +51,7 @@ void sortTable(struct Table **table, const int number, int (*cmp)(struct Table, 
 
 }
 
-int countIdentical(struct Table *table, const int number, int (*cmp)(struct Table, struct Table)) {
+int countIdentical(const struct Table *table, const int number, int (*cmp)(struct Table, struct Table)) {
     int count = 0;
     for (int i = 0; i < number - 1; i++) {
         if ((*cmp)(table[i], table[i + 1]) == 0) {
@@ -61,7 +61,7 @@ int countIdentical(struct Table *table, const int number, int (*cmp)(struct Tabl
     return count;
 }
 
-int findFirstIdentical(struct Table *table, const int number, int (*cmp)(struct Table, struct Table)) {
+int findFirstIdentical(const struct Table *table, const int number, int (*cmp)(struct Table, struct Table)) {
     int firstIdentical = -1;
     for (int i = 0; i < number - 1; i++) {
         if ((*cmp)(table[i], table[i + 1]) == 0) {

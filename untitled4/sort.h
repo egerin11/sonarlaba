@@ -17,11 +17,11 @@ int compareRom(struct Table left, struct Table right);
 
 void sortTable(struct Table **table, int number, int (*cmp)(struct Table, struct Table));
 
-int countIdentical(struct Table *table, int number, int (*cmp)(struct Table, struct Table));
+int countIdentical(const struct Table *table, int number, int (*cmp)(struct Table, struct Table));
 
 void sortTwo(struct Table **table, int pos, int count, int (*cmp)(struct Table, struct Table));
 
-int findFirstIdentical(struct Table *table, int number, int (*cmp)(struct Table, struct Table));
+int findFirstIdentical(const struct Table *table, int number, int (*cmp)(struct Table, struct Table));
 
 void sort(struct Table **table, int, int *, int *, enum SortParam sortParam);
 

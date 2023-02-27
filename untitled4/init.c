@@ -8,7 +8,7 @@ struct Table *memory(const int number) {
     return table;
 }
 
-struct Table init(char name[100], int screen, int matrix[100], float price, int ram, int rom) {
+struct Table init(char name[100], int screen,  char matrix[100], float price, int ram, int rom) {
     struct Table param;
     snprintf(param.name, sizeof(param.name), "%s", name);
     param.screen = screen;

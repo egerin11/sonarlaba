@@ -87,7 +87,7 @@ void inputTable(struct Table *in) {
     char *temporaryArray;
     printf("NAME :\n");
     getString(&temporaryArray);
-    if (strlen(temporaryArray) > 100) {
+    if (strlen(temporaryArray) > 99) {
         printf("out of memory");
         return;
     } else
@@ -99,7 +99,7 @@ void inputTable(struct Table *in) {
     }
     printf("MATRIX :\n");
     getString(&temporaryArray);
-    if (strlen(temporaryArray) > 100) {
+    if (strlen(temporaryArray) > 99) {
         printf("out of memory");
         return;
     } else

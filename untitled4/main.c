@@ -25,7 +25,8 @@ void showMenu() {
 }
 
 int main() {
-    int size = 0, capacity = 8;
+    int size = 0;
+    int capacity = 8;
     struct Table *tables = memory(capacity);
 
     int key;
@@ -33,7 +34,6 @@ int main() {
         showMenu();
         inputNumberWithBounds(&key, EXIT, FILL_STRUCT);
 
-//        printf("key is %i\n", key);
 
         switch (key) {
             case ADD_TABLE: {
@@ -74,7 +74,7 @@ int main() {
                 struct Table table;
                 inputNumber(&number);
                 while (number > 0) {
-                    printf("\tABOBA\n");
+
                     inputTable(&table);
                     addTable(&tables, &size, &capacity, table);
                     number--;
@@ -83,8 +83,9 @@ int main() {
             }
                 break;
 
-            case EXIT:
+
             default: {
+                printf("key !=6");
             }
         }
     } while (key != EXIT);
