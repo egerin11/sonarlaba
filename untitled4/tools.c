@@ -37,7 +37,8 @@ void printStruct(struct Table *table, const int number) {
 void getString(char **string) {
     int size = 0;
     int realSize = 8;
-
+    if ((*string) == NULL)
+        free(*string);
     *string = (char *) malloc(realSize * sizeof(char));
     rewind(stdin);
     char check;
