@@ -97,7 +97,8 @@ void inputTable(struct Table *in) {
     printf("input screen");
     while (scanf("%f", &(table.screen)) != 1 || getchar() != '\n') {
         printf("Enter a valid screen: ");
-        rewind(stdin);
+
+       rewind(stdin);
     }
     printf("MATRIX :\n");
     getString(&temporaryArray);
