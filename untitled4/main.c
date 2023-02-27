@@ -79,7 +79,7 @@ int main() {
                     addTable(&tables, &size, &capacity, table);
                     number--;
                 }
-
+                getchar();
             }
                 break;
 
