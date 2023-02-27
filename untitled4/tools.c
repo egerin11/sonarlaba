@@ -103,7 +103,7 @@ void inputTable(struct Table *in) {
         return;
     } else
         strcpy(table.matrix, temporaryArray);
-    free(temporaryArray);
+
     printf("Enter a valid PRICE: ");
     while (scanf("%f", &(table.price)) != 1 || getchar() != '\n') {
         printf("Enter a valid PRICE: ");
@@ -121,6 +121,7 @@ void inputTable(struct Table *in) {
     }
 
     *in = table;
+    free(temporaryArray);
 }
 
 void addTable(struct Table **tables, int *size, int *capacity, const struct Table table) {
