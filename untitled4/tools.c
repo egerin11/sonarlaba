@@ -86,11 +86,14 @@ void inputTable(struct Table *in) {
     char *temporaryArray;
     printf("NAME :\n");
     getString(&temporaryArray);
-    if (strlen(temporaryArray) > 99) {
+    if (strlen(temporaryArray) > 100) {
         printf("out of memory");
+        free(temporaryArray);
         return;
-    } else
+    } else {
         strcpy(table.name, temporaryArray);
+        free(temporaryArray);
+    }
     printf("input screen");
     while (scanf("%f", &(table.screen)) != 1 || getchar() != '\n') {
         printf("Enter a valid screen: ");
@@ -98,11 +101,14 @@ void inputTable(struct Table *in) {
     }
     printf("MATRIX :\n");
     getString(&temporaryArray);
-    if (strlen(temporaryArray) > 99) {
+    if (strlen(temporaryArray) > 100) {
         printf("out of memory");
+        free(temporaryArray);
         return;
-    } else
+    } else {
         strcpy(table.matrix, temporaryArray);
+        free(temporaryArray);
+    }
 
     printf("Enter a valid PRICE: ");
     while (scanf("%f", &(table.price)) != 1 || getchar() != '\n') {
@@ -121,7 +127,7 @@ void inputTable(struct Table *in) {
     }
 
     *in = table;
-    free(temporaryArray);
+
 }
 
 void addTable(struct Table **tables, int *size, int *capacity, const struct Table table) {
