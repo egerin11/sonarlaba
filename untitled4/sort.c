@@ -51,9 +51,9 @@ void sortTable(struct Table **table, const int number, int (*cmp)(const struct T
 
 }
 
-int countIdentical(const struct Table *table, const int number, int (*cmp)(const struct Table , const struct Table )) {
+int countIdentical(const struct Table *table, const int number, int (*cmp)(const struct Table, const struct Table)) {
     int count = 0;
-    for (int i = 0; i < number-1; i++) {
+    for (int i = 0; i < number - 1; i++) {
         if ((*cmp)(table[i], table[i + 1]) == 0) {
             count++;
         }
@@ -61,9 +61,10 @@ int countIdentical(const struct Table *table, const int number, int (*cmp)(const
     return count;
 }
 
-int findFirstIdentical(const struct Table *table, const int number, int (*cmp)(const struct Table, const struct Table)) {
+int
+findFirstIdentical(const struct Table *table, const int number, int (*cmp)(const struct Table, const struct Table)) {
     int firstIdentical = -1;
-    for (int i = 0; i < number - 1 ; i++) {
+    for (int i = 0; i < number - 1; i++) {
         if ((*cmp)(table[i], table[i + 1]) == 0) {
             firstIdentical = i;
             break;
@@ -76,7 +77,7 @@ int findFirstIdentical(const struct Table *table, const int number, int (*cmp)(c
 void sort(struct Table **table, int number, int *pos, int *count, enum SortParam sortParam) {
     switch (sortParam) {
         case sortByName: {
-            sortTable(table, number, (int (*)(const struct Table,const  struct Table)) cmpByName);
+            sortTable(table, number, (int (*)(const struct Table, const struct Table)) cmpByName);
             *pos = findFirstIdentical(*table, number, (int (*)(const struct Table, const struct Table)) cmpByName);
             *count = countIdentical(*table, number, (int (*)(const struct Table, const struct Table)) cmpByName);
 
@@ -116,13 +117,15 @@ void sort(struct Table **table, int number, int *pos, int *count, enum SortParam
             break;
     }
 }
+
 void sortTwo(struct Table **table, const int pos, int count, int (*cmp)(const struct Table, const struct Table)) {
     struct Table temp;
     bool swapped;
 
-    for (int i = pos ; i <pos+ count ; i++) {
+    for (int i = pos; i < pos + count; i++) {
         swapped = false;
-        for (int j = pos; j < pos+count - i ; j++) {
+
+        for (int j = pos; j < pos + count - i; j++) {
             if ((*cmp)((*table)[j], (*table)[j + 1])) {
                 swapped = true;
                 temp = (*table)[j];

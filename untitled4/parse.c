@@ -90,27 +90,27 @@ void prim(char *str) {
 
 void parseData(char* ptr, const char* localEnd, struct Table ** table, int currPos) {
     char name[1000];
-    float screen;
+    float screen=0.0f;
     char matrix[1000];
-    float price;
-    int ram;
-    int rom;
+    float price=0.0f;
+    int ram=0;
+    int rom=0;
     char buffer[1000];
     char typeBuffer[1000];
     ptr = findString(ptr, "<span class=\"result__name\">");
     returnTagText(ptr, buffer);
     snprintf(name, sizeof(name), "%s", buffer);
-    char *descPtr = findString(ptr, "<td class=\"result__attr_var");
+    char *descPtr = findString(ptr, "<td class='result__attr_var");
     while(descPtr != NULL && descPtr < localEnd) {
         returnTagText(descPtr, typeBuffer);
 
-        descPtr = findString(descPtr, "<td class=\"result__attr_val");
+        descPtr = findString(descPtr, "<td class='result__attr_val");
        returnTagText(descPtr, buffer);
 
         if(contains(typeBuffer, "Диагональ экрана")) {
-            char* gl = getLeft(buffer);
-            sscanf(gl, "%f", &screen);
-            free(gl);
+
+            sscanf(buffer, "%f", &screen);
+
 
         }
         else if(contains(typeBuffer, "Тип матрицы")) {
@@ -128,7 +128,7 @@ void parseData(char* ptr, const char* localEnd, struct Table ** table, int currP
             free(gl);
         }
 
-        descPtr = findString(descPtr, "<td class=\"result__attr_var");
+        descPtr = findString(descPtr, "<td class='result__attr_var");
     }
     ptr = findString(ptr, "<span data-code=\"");
     returnTagText(ptr, buffer);
@@ -156,7 +156,7 @@ void parse(struct Table** table, int* size) {
     ptr = start;
     int count = getCount(ptr, "<li class=\"result__item cr-result__full");
     *size = count;
-    *table = (struct Table*)malloc(60* sizeof(table));
+    *table = (struct Table*)malloc(60* sizeof(struct Table));
     int currPos = 0;
     while (ptr < end) {
         ptr = findString(ptr, "<li class=\"result__item cr-result__full");
