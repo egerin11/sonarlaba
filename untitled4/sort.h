@@ -17,7 +17,7 @@ int compareRom(struct Table left, struct Table right);
 
 void sortTable(struct Table **table, int number, int (*cmp)(struct Table, struct Table));
 
-int countIdentical(const struct Table *table, int number, int (*cmp)(struct Table, struct Table));
+int countIdentical(const struct Table *table,int, int number, int (*cmp)(struct Table, struct Table));
 
 void sortTwo(struct Table **table, int pos, int count, int (*cmp)(struct Table, struct Table));
 

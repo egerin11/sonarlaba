@@ -60,16 +60,16 @@ int main() {
             }
                 break;
             case SORT_TABLES_SUB_MENU: {
-                    int sizeTwo = 0;
-                    int pos = 0;
-                    int count = 0;
-                    inputNumberWithBounds(&sizeTwo, 0, 6);
-                    sort(&tables, size, &pos, &count, sizeTwo);
+                int sizeTwo = 0;
+                int pos = 0;
+                int count = 0;
+                inputNumberWithBounds(&sizeTwo, 0, 6);
+                sort(&tables, size, &pos, &count, sizeTwo);
 
-                    inputNumberWithBounds(&sizeTwo, 0, 6);
-                sortSecond(&tables,pos,count,sizeTwo);
-                       //  sort(&tables, size, &pos, &count, sizeTwo);
-               getchar();
+                inputNumberWithBounds(&sizeTwo, 0, 6);
+                sortSecond(&tables, pos, count, sizeTwo);
+
+                getchar();
 
             }
                 break;

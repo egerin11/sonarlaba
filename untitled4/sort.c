@@ -51,66 +51,69 @@ void sortTable(struct Table **table, const int number, int (*cmp)(const struct T
 
 }
 
-int countIdentical(const struct Table *table, const int number, int (*cmp)(const struct Table, const struct Table)) {
+int countIdentical(const struct Table *table,const int pos, const int number, int (*cmp)(const struct Table, const struct Table)) {
     int count = 0;
-    for (int i = 0; i < number - 1; i++) {
+    for (int i = pos; i < number - 1; i++) {
         if ((*cmp)(table[i], table[i + 1]) == 0) {
             count++;
         }
+        else break;
     }
     return count;
 }
 
-int
-findFirstIdentical(const struct Table *table, const int number, int (*cmp)(const struct Table, const struct Table)) {
-    int firstIdentical = -1;
-    for (int i = 0; i < number - 1; i++) {
-        if ((*cmp)(table[i], table[i + 1]) == 0) {
-            firstIdentical = i;
-            break;
-
+int findFirstIdentical(const struct Table *table, int number, int (*cmp)(const struct Table, const struct Table)) {
+    for (int i = 0; i < number-1; i++) {
+        int count = 1;
+        for (int j = i + 1; j < number; j++) {
+            if ((*cmp)(table[i], table[j]) == 0) {
+                count++;
+                return count;
+            }
         }
+
     }
-    return firstIdentical;
+
 }
 
 void sort(struct Table **table, int number, int *pos, int *count, enum SortParam sortParam) {
+
     switch (sortParam) {
         case sortByName: {
             sortTable(table, number, (int (*)(const struct Table, const struct Table)) cmpByName);
             *pos = findFirstIdentical(*table, number, (int (*)(const struct Table, const struct Table)) cmpByName);
-            *count = countIdentical(*table, number, (int (*)(const struct Table, const struct Table)) cmpByName);
+            *count = countIdentical(*table, *pos, number, (int (*)(const struct Table, const struct Table)) cmpByName);
 
         }
             break;
         case sortByMatrix: {
             sortTable(table, number, (int (*)(const struct Table, const struct Table)) cmpByMatrix);
             *pos = findFirstIdentical(*table, number, (int (*)(const struct Table, const struct Table)) cmpByMatrix);
-            *count = countIdentical(*table, number, (int (*)(const struct Table, const struct Table)) cmpByMatrix);
+            *count = countIdentical(*table, *pos,number, (int (*)(const struct Table, const struct Table)) cmpByMatrix);
         }
             break;
         case sortByScreen: {
             sortTable(table, number, (int (*)(const struct Table, const struct Table)) compareScreen);
             *pos = findFirstIdentical(*table, number, (int (*)(const struct Table, const struct Table)) compareScreen);
-            *count = countIdentical(*table, number, (int (*)(const struct Table, const struct Table)) compareScreen);
+            *count = countIdentical(*table,*pos, number, (int (*)(const struct Table, const struct Table)) compareScreen);
         }
             break;
         case sortByPrice : {
             sortTable(table, number, (int (*)(const struct Table, const struct Table)) comparePrice);
             *pos = findFirstIdentical(*table, number, (int (*)(const struct Table, const struct Table)) comparePrice);
-            *count = countIdentical(*table, number, (int (*)(const struct Table, const struct Table)) comparePrice);
+            *count = countIdentical(*table, *pos,number, (int (*)(const struct Table, const struct Table)) comparePrice);
         }
             break;
         case sortByRam: {
             sortTable(table, number, (int (*)(const struct Table, const struct Table)) compareRam);
             *pos = findFirstIdentical(*table, number, (int (*)(const struct Table, const struct Table)) compareRam);
-            *count = countIdentical(*table, number, (int (*)(const struct Table, const struct Table)) compareRam);
+            *count = countIdentical(*table, *pos,number, (int (*)(const struct Table, const struct Table)) compareRam);
         }
             break;
         case sortByRom: {
             sortTable(table, number, (int (*)(const struct Table, const struct Table)) compareRom);
             *pos = findFirstIdentical(*table, number, (int (*)(const struct Table, const struct Table)) compareRom);
-            *count = countIdentical(*table, number, (int (*)(const struct Table, const struct Table)) compareRom);
+            *count = countIdentical(*table, *pos,number, (int (*)(const struct Table, const struct Table)) compareRom);
         }
             break;
         default:
