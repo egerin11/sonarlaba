@@ -68,9 +68,9 @@ int findFirstIdentical(const struct Table *table, int number, int (*cmp)(const s
         for (int j = i + 1; j < number; j++) {
             if ((*cmp)(table[i], table[j]) == 0) {
                 count++;
-
+                return count;
             }
-            return count;
+
         }
 
     }
