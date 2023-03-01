@@ -25,10 +25,10 @@ void inputNumberWithBounds(int *number, const int leftBound, const int rightBoun
 
 
 void printStruct(struct Table *table, const int number) {
-    printf("#\tname\tscreen\tmatrix\tprice\tram\trom\n");
+    printf("#\t\tname\t\tscreen\t\tmatrix\t\tprice\t\tram\t\trom\n");
     for (int i = 0; i < number; i++) {
 
-        printf("[%d] %4s\t%f\t%4s\t%4f\t%4d\t%4d\t\n", i + 1, table[i].name, table[i].screen, table[i].matrix,
+        printf("[%d] %4s\t\t%4f\t\t%4s\t\t%4f\t\t%4d\t\t%4d\t\t\n", i + 1, table[i].name, table[i].screen, table[i].matrix,
                table[i].price, table[i].ram, table[i].rom);
     }
 
@@ -86,7 +86,7 @@ void inputTable(struct Table *in) {
     char *temporaryArray;
     printf("NAME :\n");
     getString(&temporaryArray);
-    if (strlen(temporaryArray) > 100) {
+    if (strlen(temporaryArray) > 1000) {
         printf("out of memory");
         free(temporaryArray);
         return;
@@ -97,12 +97,11 @@ void inputTable(struct Table *in) {
     printf("input screen");
     while (scanf("%f", &(table.screen)) != 1 || getchar() != '\n') {
         printf("Enter a valid screen: ");
-
        rewind(stdin);
     }
     printf("MATRIX :\n");
     getString(&temporaryArray);
-    if (strlen(temporaryArray) > 100) {
+    if (strlen(temporaryArray) > 1000) {
         printf("out of memory");
         free(temporaryArray);
         return;

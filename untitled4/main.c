@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include"init.h"
 #include "sort.h"
+#include "parse.h"
 
 #define EXIT 0
 #define ADD_TABLE 1
@@ -11,6 +12,7 @@
 #define PRINT_TABLES 3
 #define SORT_TABLES_SUB_MENU 4
 #define FILL_STRUCT 5
+#define PARSE 6
 
 void showMenu() {
     clearScreen();
@@ -21,18 +23,19 @@ void showMenu() {
     printf("\t3 - PRINT TABLES\n");
     printf("\t4 - SORT TABLES\n");
     printf("\t5 - FILL STRUCT\n");
+    printf("\t6 - PARSE\n");
     printf("\n");
 }
 
 int main() {
     int size = 0;
-    int capacity = 8;
+    int capacity = 64;
     struct Table *tables = memory(capacity);
 
     int key;
     do {
         showMenu();
-        inputNumberWithBounds(&key, EXIT, FILL_STRUCT);
+        inputNumberWithBounds(&key, EXIT, PARSE);
 
 
         switch (key) {
@@ -57,14 +60,14 @@ int main() {
             }
                 break;
             case SORT_TABLES_SUB_MENU: {
-                int sizeTwo = 0;
-                int pos = 0;
-                int count = 0;
-                inputNumberWithBounds(&sizeTwo, 0, 6);
-                sort(&tables, size, &pos, &count, sizeTwo);
-                inputNumberWithBounds(&sizeTwo, 0, 6);
-                sortSecond(&tables, pos, count, sizeTwo);
-                getchar();
+                    int sizeTwo = 0;
+                    int pos = 0;
+                    int count = 0;
+                    inputNumberWithBounds(&sizeTwo, 0, 6);
+                    sort(&tables, size, &pos, &count, sizeTwo);
+                    inputNumberWithBounds(&sizeTwo, 0, 6);
+                  sortSecond(&tables, pos, count, sizeTwo);
+               getchar();
 
             }
                 break;
@@ -82,10 +85,15 @@ int main() {
                 getchar();
             }
                 break;
+            case PARSE: {
 
+                parse(&tables, &size);
+                getchar();
+            }
+                break;
 
             default: {
-                printf("key !=6");
+                printf("");
             }
         }
     } while (key != EXIT);
