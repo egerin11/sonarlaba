@@ -12,20 +12,33 @@ int cmpByMatrix(const struct Table left, const struct Table right) {
 }
 
 int compareScreen(const struct Table left, const struct Table right) {
-    return left.screen > right.screen ? 0 : ((left.screen < right.screen) ? -1 : 1);
+    if(left.screen < right.screen)
+        return -1;
+    else if(left.screen > right.screen)
+        return 1;
+    else return 0;
 }
 
 int comparePrice(const struct Table left, const struct Table right) {
-    return left.price > right.price ? 0 : ((left.price < right.price) ? -1 : 1);
-}
+    if(left.screen < right.screen)
+        return -1;
+    else if(left.screen > right.screen)
+        return 1;
+    else return 0;}
 
 int compareRam(const struct Table left, const struct Table right) {
-    return left.ram > right.ram ? 0 : ((left.ram < right.ram) ? -1 : 1);
-}
+    if(left.screen < right.screen)
+        return -1;
+    else if(left.screen > right.screen)
+        return 1;
+    else return 0;}
 
 int compareRom(const struct Table left, const struct Table right) {
-    return left.rom > right.rom ? 0 : ((left.rom < right.rom) ? -1 : 1);
-}
+    if(left.screen < right.screen)
+        return -1;
+    else if(left.screen > right.screen)
+        return 1;
+    else return 0;}
 
 void sortTable(struct Table **table, const int number, int (*cmp)(const struct Table, const struct Table)) {
 
